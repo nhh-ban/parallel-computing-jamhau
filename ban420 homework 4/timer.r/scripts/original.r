@@ -2,6 +2,7 @@
 library(tweedie) 
 library(ggplot2)
 
+tic()
 simTweedieTest <-  
   function(N){ 
     t.test( 
@@ -10,14 +11,15 @@ simTweedieTest <-
     )$p.value 
   } 
 
-
+toc()
 # Assignment 2:  
+tic()
 MTweedieTests <-  
   function(N,M,sig){ 
     sum(replicate(M,simTweedieTest(N)) < sig)/M 
   } 
 
-
+toc()
 # Assignment 3:  
 df <-  
   expand.grid( 
@@ -25,7 +27,7 @@ df <-
     M = 1000, 
     share_reject = NA) 
 
-
+tic()
 for(i in 1:nrow(df)){ 
   df$share_reject[i] <-  
     MTweedieTests( 
@@ -33,7 +35,7 @@ for(i in 1:nrow(df)){
       M=df$M[i], 
       sig=.05) 
 } 
-
+toc()
 
 
 
@@ -53,6 +55,7 @@ for(i in 1:nrow(df)){
 library(magrittr)
 library(tidyverse)
 
+tic()
 simDat <-
   function(N, type, mu) {
     if (type == "tweedie") {
@@ -71,9 +74,10 @@ simDat <-
     }
   }
 
-
+toc()
 # Next, the test. Note, we use mu two places:
 # both for the data simulation and as the null.
+tic()
 simTest <-
   function(N, type, mu) {
     t.test(simDat(N = N,
@@ -81,11 +85,12 @@ simTest <-
                   mu = mu),
            mu = mu)$p.value
   }
-
+toc()
 
 # Running many tests is almost the same as before.
 # Here the mean is hard coded in, as we're not
 # going to change it.
+tic()
 MTests <-
   function(N, M, type, sig) {
     sum(replicate(M,
@@ -97,7 +102,7 @@ MTests <-
                       10000
                   )) < sig) / M
   }
-
+toc()
 
 # We can now repeat the same analysis as before,
 # but for both the tweedie and the normal:
@@ -110,7 +115,7 @@ df <-
   ) %>%
   as_tibble()
 
-
+tic()
 for (i in 1:nrow(df)) {
   print(i)
   df$share_reject[i] <-
@@ -119,7 +124,7 @@ for (i in 1:nrow(df)) {
            df$type[i],
            .05)
 }
-
+toc()
 # As you see, with normally distributed data, N can
 # be very small and the t-test is fine. With a tweedie,
 # "large enough" can be many thousands. If we try

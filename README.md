@@ -2,11 +2,11 @@
 # :wave: Welcome to the parallelization assignment in BAN400!
 The assignments in BAN400 are organized through Github and Github Classroom. By accepting this assignment, the repository will be copied to your Github user so that you can clone it to your own personal machine and work on it. Then, you simply commit your changes and push back to Github when you are done. You can commit and push as much as you want before the deadline.
 
-**Date:**
+**Date:31.10.23**
 
-**Name:**
+**Name:James haugen**
 
-**Student number:**
+**Student number: S212318**
 
 ## :information_source: Problem 1
 Update the personal information above.
