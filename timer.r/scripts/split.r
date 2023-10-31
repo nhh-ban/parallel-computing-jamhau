@@ -78,6 +78,11 @@ stopCluster(cl)
 # For 2.1 the time it takes to run the assigment 3 function is: 25.398 sec elapsed
 # for 2.2 the time is 25.079 sec 
 #for 2.3 the time is 5.04 sec
+#The reason why its faster might be simmultaneous execution. ultiple tasks can run concurrently,
+#which means multiple operations can be completed at the same time. 
+# Also Better Utilization of Resources: Modern computers have multiple cores. 
+#When tasks are run sequentially on a single core, the remaining cores remain underutilized. 
+#Parallel computing utilizes these cores, which means more tasks can be done in the same amount of time.
 
 
 
